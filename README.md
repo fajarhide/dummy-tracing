@@ -27,7 +27,7 @@ It includes trace discovery through Logs and Exemplars.
 
 6. Discover Traces
 
-From Exemplars:
+### From Exemplars:
 
 - Navigate to http://localhost:3000/explore
 - Go to the explore page
@@ -35,7 +35,7 @@ From Exemplars:
 
 ![Exemplars](./img/prometheus.png)
 
-From Logs:
+### From Logs:
 
 - Choose the Loki datasource and execute `{container_name="dummy-tracing"} | logfmt | latency > 1s`
 
