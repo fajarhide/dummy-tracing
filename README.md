@@ -3,7 +3,7 @@ This example simple of OpenTelemetry and Prometheus in Go.
 
 It includes trace discovery through Logs and Exemplars.
 
-## Steps
+## Steps local
 
 1. Install Loki Docker Driver
 
@@ -40,3 +40,7 @@ It includes trace discovery through Logs and Exemplars.
 - Choose the Loki datasource and execute `{container_name="dummy-tracing"} | logfmt | latency > 1s`
 
 ![Loki Derived Fields](./img/loki.png)
+
+## Step Kubernetes
+
+`kubectl apply -f manifest.yaml`
