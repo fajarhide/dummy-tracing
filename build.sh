@@ -1,5 +1,4 @@
 CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
 
-docker build -t fajarhide/demo-dt:v2 .
+docker build -t dummy-tracing .
 rm app
-docker push fajarhide/demo-dt:v2
