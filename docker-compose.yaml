@@ -10,7 +10,7 @@ services:
         loki-url: http://localhost:3100/loki/api/v1/push
 
   tempo:
-    image: grafana/tempo:1.0.1
+    image: grafana/tempo:0.7.0
     command: ["--target=all", "--storage.trace.backend=local", "--storage.trace.local.path=/var/tempo", "--auth.enabled=false"]
     ports:
     - 8081:80
@@ -19,8 +19,23 @@ services:
       options:
         loki-url: 'http://localhost:3100/api/prom/push'
 
+  tempo-query:
+    image: grafana/tempo-query:0.7.0
+    environment:
+    - BACKEND=tempo:80
+    volumes:
+    - ./etc/tempo-query.yaml:/etc/tempo-query.yaml
+    ports:
+    - "16686:16686"  # jaeger-ui
+    depends_on:
+    - tempo
+    logging:
+      driver: loki
+      options:
+        loki-url: 'http://localhost:3100/api/prom/push'
+
   grafana:
-    image: grafana/grafana:8.0.6
+    image: grafana/grafana:7.3.x-exemplars
     volumes:
     - ./config/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
     environment:
@@ -41,12 +56,11 @@ services:
         loki-url: 'http://localhost:3100/api/prom/push'
 
   prometheus:
-    image: prom/prometheus:v2.28.1
+    image: cstyan/prometheus:exemplars-64206a
     volumes:
       - ./config/prometheus.yaml:/etc/prometheus.yaml
     entrypoint:
       - /bin/prometheus
       - --config.file=/etc/prometheus.yaml
-      - --enable-feature=exemplar-storage
     ports:
       - "9090:9090"
