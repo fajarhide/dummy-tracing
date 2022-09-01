@@ -1,3 +1,5 @@
+[![Mark stale issues and pull requests](https://github.com/fajarhide/dummy-tracing/actions/workflows/stale.yml/badge.svg)](https://github.com/fajarhide/dummy-tracing/actions/workflows/stale.yml)
+
 # Dummy-Distributed-Tracing
 This example simple of OpenTelemetry and Prometheus in Go.  
 
