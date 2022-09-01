@@ -44,3 +44,5 @@ It includes trace discovery through Logs and Exemplars.
 ## Step Kubernetes
 
 `kubectl apply -f manifest.yaml`
+
+weirt
