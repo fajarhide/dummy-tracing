@@ -37,7 +37,7 @@ It includes trace discovery through Logs and Exemplars.
 
 ### From Logs:
 
-- Choose the Loki datasource and execute `{container_name="dummy-tracing"} | logfmt | latency > 1s`
+- Choose the Loki datasource and execute `{container_name="demo-tracing"} | logfmt | latency > 1s`
 
 ![Loki Derived Fields](./img/loki.png)
 
